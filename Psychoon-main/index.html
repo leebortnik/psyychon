@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- FIM GOOGLE FONTES -->
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- FIM BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="style.css">
+
+    <script src="menu.js" defer></script>
+
+    <title>PsychON</title>
+</head>
+<body>
+    
+    <header>
+        <div class="interface">
+            <div class="logo">
+                <img src="/psychON/images/logo.png">
+            </div><!--logo-->
+
+            <nav class="menu-desktop">
+                <ul>
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">frases motivacionais</a></li>
+                    <li><a href="#">sobre nós</a></li>
+                    <li><a href="#">fale conosco</a></li>
+                </ul>
+            </nav>
+
+            <div class="btn-contato">
+                <a href="#">
+                    <button>Entrar</button>
+                </a>
+            </div><!--btn-contato-->
+
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+
+                <nav>
+                     <ul>
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">frases motivacionais</a></li>
+                    <li><a href="#">sobre nós</a></li>
+                    <li><a href="#">fale conosco</a></li>
+                </ul>
+                </nav>
+
+            </div><!--menu-mobile-->
+            <div class="overlay-menu" id="overlay-menu"></div>
+        </div><!--interface-->
+    </header>
+
+    <main>
+        <section class="topo-do-site">
+            <div class="interface">
+                <div class="flex">
+                    <div class="txt-topo-site">
+                        <h1>SEJA BEM VINDO AO<span> PSYCHON</span></h1>
+                        <p>Uma platarforma para promover o bem-estar e o acompanhamento emocional de estudantes e seus responsáveis</p>
+
+                        <div class="btn-contato">
+                            <a href="/telaCadastro/cadastro.html">
+                                <button>Se cadastre aqui</button>
+                            </a>
+                        </div>
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--topo-do-site-->
+
+        <section class="especiliadades">
+            <div class="interface">
+                <h2 class="titulo">FRASES<span> MOTIVACIONAIS </span></h2>
+                <div class="flex">
+                    <div class="especialidades-box">
+                        <i class="bi bi-star"></i>
+                        <h3>Sua Força Está em Você</h3>
+                        <p>Nos dias difíceis, lembre-se: a força que você precisa já está dentro de você. Use os desafios como degraus para crescer e seguir em frente.</p>
+                    </div><!--especialidades-box-->
+
+                    <div class="especialidades-box">
+                        <i class="bi bi-sun"></i>
+                        <h3>Nunca Desista</h3>
+                        <p>Cada batalha vencida começa com a decisão de continuar. Descanse, mas nunca desista. Amanhã é uma nova chance para vencer.</p>
+                    </div><!--especialidades-box-->
+
+                    <div class="especialidades-box">
+                        <i class="bi bi-moon"></i>
+                        <h3>Recomece Sempre</h3>
+                        <p>Todo amanhecer traz uma nova oportunidade. Não importa quantas vezes você caia, levante-se e continue. O progresso é feito de pequenos passos.</p>
+                    </div><!--especialidades-box-->
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--especiliadades-->
+
+        <section class="portfolio">
+            <div class="interface">
+                <h2 class="titulo">MINHAS<span> INDICAÇÕES.</span></h2>
+                <div class="indica">
+                    <p>Embarque em uma leitura que ilumina o caminho do autoconhecimento e do crescimento pessoal, oferecendo insights valiosos e ferramentas práticas para transformar desafios em oportunidades e encontrar a melhor versão de si mesmo.</p>
+                </div>
+                <div class="flex">
+                    <div class="img-port" style="background-image: url(/images/livro\ 1.jpg)">
+                        <div class="overlay">Projeto 1</div>
+                    </div>
+                    <div class="img-port" style="background-image: url(/images/livro\ 02.jpg)">
+                        <div class="overlay">Projeto 2</div>
+                    </div>
+                    <div class="img-port" style="background-image: url(/images/livro\ 03.webp)">
+                        <div class="overlay">Projeto 3</div>
+                    </div>
+                    
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--portfolio-->
+
+        <section class="sobre">
+            <div class="interface">
+                <div class="flex">
+                    <div class="txt-sobre">
+                        <h2>QUEM <span>SOMOS?</span></h2>
+                        <p>"Somos Letícia, Vinícius, Ruan e Bruno, uma equipe comprometida com a promoção da saúde mental e do bem-estar. Nosso site foi criado com o propósito de oferecer um espaço seguro e acolhedor, onde os usuários possam encontrar recursos e apoio para lidar com desafios emocionais e psicológicos. Acreditamos que todos merecem acesso a informações e práticas que ajudem a alcançar um estado de equilíbrio e serenidade. Junte-se a nós nessa jornada de autodescoberta e fortalecimento pessoal."</p>
+                    </div><!--txt-sobre-->
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--sobre-->
+
+        <section class="formulario">
+            <div class="interface">
+                <h2 class="titulo">FALE <span>CONOSCO.</span></h2>
+
+                <form action="">
+                    <input type="text" name="" id="" placeholder="Seu nome completo:" required>
+                    <input type="text" name="" id="" placeholder="Seu e-mail:" required>
+                    <input type="text" name="" id="" placeholder="Seu celular:">
+                    <textarea name="" id="" placeholder="Sua mensagem" required></textarea>
+                    <div class="btn-enviar"><input type="submit" value="ENVIAR"></div>
+                </form>
+            </div><!--interface-->
+        </section><!--formulario-->
+
+    </main>
+
+    <footer>
+        <div class="interface">
+            <div class="line-footer">
+                <div class="flex">
+                    <div class="logo-footer">
+                        <img src="images/logo-projeto.png">
+                    </div><!--logo-footer-->
+                    <div class="btn-social">
+                        <a href="#"><button><i class="bi bi-instagram"></i></button></a>
+                        <a href="#"><button><i class="bi bi-youtube"></i></button></a>
+                        <a href="#"><button><i class="bi bi-linkedin"></i></button></a>
+                    </div><!--btn-social-->
+                </div>
+            </div><!--line-footer-->
+
+            <div class="line-footer borda">
+                <p><i class="bi bi-envelope-fill"></i> <a href="mailto:contato@bruno.com.br">contato@bruno.com.br</a></p>
+            </div><!--line-footer-->
+        </div><!--interface-->
+    </footer>
+
+</body>
+</html>
