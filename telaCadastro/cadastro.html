@@ -2,47 +2,291 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
+  <title>Cadastro de Alunos e Responsáveis</title>
+  <style>
+    /* Estilo da página */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #003366;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 400px; /* Ajuste da largura */
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 20px;
+      background-color: #f1f1f1;
+    }
+    .tab.active {
+      background-color: #0073e6;
+      color: #fff;
+    }
+    h2 {
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      padding-right: 35px; /* espaço para o ícone de olho */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input.error {
+      border-color: red;
+    }
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      display: none;
+      margin-top: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .success-message {
+      color: green;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+    }
+    /* Estilo do ícone de olho */
+    .password-container {
+      position: relative;
+    }
+    .eye-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="buttonsForm">
-      <div class="btnColor"></div>
-      <button id="btnSignin">Aluno</button>
-      <button id="btnSignup">Responsável</button>
-    </div>
 
-    <form id="signin">
-      <input type="text" placeholder="nome do aluno" required />
-      <input type="number" placeholder="matricula" required />
-      <input type="email" placeholder="email do responsável" required />
-      <input type="password" placeholder="senha" required />
-      <div class="divCheck">
-        <input type="checkbox" />
-        <span>Manter conectado</span>
-      </div>
-      <button type="submit">Cadastrar</button>
-    </form>
-
-    <form id="signup">
-      <input type="text" placeholder="Email" required />
-      <i class="fas fa-envelope iEmail"></i>
-      <input type="password" placeholder="Password" required />
-      <i class="fas fa-lock iPassword"></i>
-      <input type="password" placeholder="Password" required />
-      <i class="fas fa-lock iPassword2"></i>
-      <div class="divCheck">
-        <input type="checkbox" required />
-        <span>Terms</span>
-      </div>
-      <button type="submit">Sign up</button>
-    </form>
+<div class="container">
+  <div class="tabs">
+    <div class="tab active" onclick="showPage('alunoPage')">Aluno</div>
+    <div class="tab" onclick="showPage('responsavelPage')">Responsável</div>
   </div>
 
-  <script src="script.js"></script>
+  <div id="alunoPage" class="form-page">
+    <h2>Cadastro de Aluno</h2>
+    <div class="form-group">
+      <label for="nomeAluno">Nome do Aluno</label>
+      <input type="text" id="nomeAluno" required>
+      <span class="error-message" id="nomeAlunoError">Campo obrigatório</span>
+    </div>
+    <div class="form-group">
+      <label for="matricula">Matrícula (até 8 caracteres)</label>
+      <input type="text" id="matricula" maxlength="8" required>
+      <span class="error-message" id="matriculaError">Campo obrigatório</span>
+    </div>
+    <div class="form-group">
+      <label for="emailAluno">Email do Responsável</label>
+      <input type="email" id="emailAluno" required>
+      <span class="error-message" id="emailAlunoError">Insira um e-mail válido com "@"</span>
+    </div>
+    <div class="form-group password-container">
+      <label for="senhaAluno">Senha</label>
+      <input type="password" id="senhaAluno" required>
+      <span class="eye-icon" onclick="togglePassword('senhaAluno')">👁️</span>
+      <span class="error-message" id="senhaAlunoError">Campo obrigatório</span>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="manterConectadoAluno">
+      <label for="manterConectadoAluno">Manter Conectado</label>
+    </div>
+    <button id="cadastrarAlunoBtn" onclick="cadastrarAluno()">Cadastrar Aluno</button>
+    <p class="success-message" id="alunoSuccess"></p>
+    <p id="alunoId"></p>
+  </div>
+
+  <div id="responsavelPage" class="form-page" style="display:none;">
+    <h2>Cadastro de Responsável</h2>
+    <div class="form-group">
+      <label for="nomeResponsavel">Nome</label>
+      <input type="text" id="nomeResponsavel" required>
+      <span class="error-message" id="nomeResponsavelError">Campo obrigatório</span>
+    </div>
+    <div class="form-group">
+      <label for="emailResponsavel">Email do Responsável</label>
+      <input type="email" id="emailResponsavel" required>
+      <span class="error-message" id="emailResponsavelError">Insira um e-mail válido com "@"</span>
+    </div>
+    <div class="form-group">
+      <label for="idAlunoResponsavel">ID do Aluno</label>
+      <input type="text" id="idAlunoResponsavel" required>
+      <span class="error-message" id="idAlunoResponsavelError">Campo obrigatório</span>
+    </div>
+    <div class="form-group password-container">
+      <label for="senhaResponsavel">Senha</label>
+      <input type="password" id="senhaResponsavel" required>
+      <span class="eye-icon" onclick="togglePassword('senhaResponsavel')">👁️</span>
+      <span class="error-message" id="senhaResponsavelError">Campo obrigatório</span>
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="manterConectadoResponsavel">
+      <label for="manterConectadoResponsavel">Manter Conectado</label>
+    </div>
+    <button id="cadastrarResponsavelBtn" onclick="cadastrarResponsavel()">Cadastrar Responsável</button>
+    <p class="success-message" id="responsavelSuccess"></p>
+  </div>
+</div>
+
+<script>
+  let alunoID;
+  let alunoCadastrado = false;
+  let responsavelCadastrado = false;
+
+  function showPage(pageId) {
+    document.getElementById("alunoPage").style.display = pageId === "alunoPage" ? "block" : "none";
+    document.getElementById("responsavelPage").style.display = pageId === "responsavelPage" ? "block" : "none";
+    document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+    document.querySelector(`.tab[onclick="showPage('${pageId}')"]`).classList.add("active");
+  }
+
+  function cadastrarAluno() {
+    if (alunoCadastrado) return;
+
+    const nomeAluno = document.getElementById("nomeAluno");
+    const matricula = document.getElementById("matricula");
+    const emailAluno = document.getElementById("emailAluno");
+    const senhaAluno = document.getElementById("senhaAluno");
+
+    let valid = true;
+
+    // Validação dos campos de aluno
+    [nomeAluno, matricula, senhaAluno].forEach((input) => {
+      const errorMsg = document.getElementById(input.id + "Error");
+      if (input.value.trim() === "") {
+        errorMsg.style.display = "block";
+        input.classList.add("error");
+        valid = false;
+      } else {
+        errorMsg.style.display = "none";
+        input.classList.remove("error");
+      }
+    });
+
+    // Validação do email
+    const emailErrorMsg = document.getElementById("emailAlunoError");
+    if (!emailAluno.value.includes("@")) {
+      emailErrorMsg.style.display = "block";
+      emailAluno.classList.add("error");
+      valid = false;
+    } else {
+      emailErrorMsg.style.display = "none";
+      emailAluno.classList.remove("error");
+    }
+
+    if (!valid) return;
+
+    // Gerar ID do aluno e bloquear o botão de cadastro
+    alunoID = "ID" + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById("alunoId").innerText = "ID do Aluno: " + alunoID;
+    document.getElementById("alunoSuccess").innerText = "Aluno cadastrado com sucesso!";
+    document.getElementById("cadastrarAlunoBtn").disabled = true;
+    alunoCadastrado = true;
+  }
+
+  function cadastrarResponsavel() {
+    if (responsavelCadastrado) return;
+
+    const nomeResponsavel = document.getElementById("nomeResponsavel");
+    const emailResponsavel = document.getElementById("emailResponsavel");
+    const idAlunoResponsavel = document.getElementById("idAlunoResponsavel");
+    const senhaResponsavel = document.getElementById("senhaResponsavel");
+
+    let valid = true;
+
+    // Validação dos campos de responsável
+    [nomeResponsavel, idAlunoResponsavel, senhaResponsavel].forEach((input) => {
+      const errorMsg = document.getElementById(input.id + "Error");
+      if (input.value.trim() === "") {
+        errorMsg.style.display = "block";
+        input.classList.add("error");
+        valid = false;
+      } else {
+        errorMsg.style.display = "none";
+        input.classList.remove("error");
+      }
+    });
+
+    // Validação do email
+    const emailErrorMsg = document.getElementById("emailResponsavelError");
+    if (!emailResponsavel.value.includes("@")) {
+      emailErrorMsg.style.display = "block";
+      emailResponsavel.classList.add("error");
+      valid = false;
+    } else {
+      emailErrorMsg.style.display = "none";
+      emailResponsavel.classList.remove("error");
+    }
+
+    if (!valid) return;
+
+    // Verificação de ID do aluno e bloqueio do botão de cadastro
+    if (idAlunoResponsavel.value !== alunoID) {
+      alert("ID do Aluno incorreto!");
+      return;
+    }
+
+    document.getElementById("responsavelSuccess").innerText = "Responsável cadastrado com sucesso!";
+    document.getElementById("cadastrarResponsavelBtn").disabled = true;
+    responsavelCadastrado = true;
+  }
+
+  // Função para alternar a visibilidade da senha
+  function togglePassword(fieldId) {
+    const passwordField = document.getElementById(fieldId);
+    const fieldType = passwordField.getAttribute("type");
+    passwordField.setAttribute("type", fieldType === "password" ? "text" : "password");
+  }
+</script>
+
 </body>
 </html>
