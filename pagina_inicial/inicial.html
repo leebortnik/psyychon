@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PsychON</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="user-info">
+      <p id="greeting">Oi, <span id="user-name"></span>!</p>
+      <p id="user-role"></p>
+    </div>
+    <nav>
+      <a href="#tips">Dicas de Saúde Mental</a>
+      <a href="#activities">Atividades Recomendadas</a>
+      <a href="#testimonials">Depoimentos</a>
+      <a href="#contact">Fale Conosco</a>
+
+      <a href="/menu/menu.html">
+        <button class="login-button">menu</button>
+      </a>
+
+      <a href="/Psychoon-main/index.html">
+      <button class="login-button">Sair</button>
+    </a>
+    </nav>
+  </div>
+
+  <!-- Seção: Dicas de Saúde Mental -->
+  <section id="tips" class="section">
+    <h2>DICAS DE <span class="highlight">SAÚDE MENTAL</span></h2>
+    <ul>
+      <li>Reserve um tempo para você: pratique hobbies ou relaxe.</li>
+      <li>Faça exercícios regularmente, mesmo que sejam caminhadas curtas.</li>
+      <li>Mantenha contato com amigos e familiares para fortalecer vínculos.</li>
+      <li>Pratique a respiração profunda ou a meditação para aliviar o estresse.</li>
+      <li>Se sentir sobrecarregado, busque apoio emocional ou profissional.</li>
+    </ul>
+  </section>
+
+  <!-- Nova Seção: Atividades Recomendadas -->
+  <section id="activities" class="section">
+    <h2>ATIVIDADES <span class="highlight">RECOMENDADAS</span></h2>
+    <ul>
+      <li>Pratique 10 minutos de meditação diariamente.</li>
+      <li>Faça uma caminhada ao ar livre.</li>
+      <li>Experimente exercícios de respiração profunda.</li>
+      <li>Mantenha um diário para registrar seus sentimentos.</li>
+    </ul>
+  </section>
+
+  <!-- Nova Seção: Frases Motivacionais -->
+  <section id="motivational-quotes" class="section">
+    <h2>FRASES <span class="highlight">MOTIVACIONAIS</span></h2>
+    <p>"Você é mais forte do que imagina. Continue firme."</p>
+    <p>"Pequenos passos levam a grandes conquistas."</p>
+    <p>"Sempre há uma nova oportunidade para recomeçar."</p>
+  </section>
+
+  <!-- Seção: Depoimentos -->
+  <section id="testimonials" class="section testimonials">
+    <h2>O QUE DIZEM <span class="highlight">NOSSOS USUÁRIOS</span></h2>
+    <div class="testimonial">
+      <p>"O PsychON me ajudou a organizar minha rotina e cuidar da minha saúde emocional. É incrível!"</p>
+      <span>- Maria, 18 anos</span>
+    </div>
+    <div class="testimonial">
+      <p>"Como responsável, agora posso acompanhar melhor o bem-estar do meu filho. A plataforma é excelente!"</p>
+      <span>- João, pai de um aluno</span>
+      <div class="testimonial">
+      <p>"A plataforma é prática e cheia de recursos que realmente ajudam na saúde mental. Eu me sinto mais confiante no dia a dia!"</p>
+      <span>- Ana, 21 anos</span>
+    </div>
+    <div class="testimonial">
+      <p>"Eu adorava sentir que estava sozinho, mas o PsychON trouxe ferramentas e suporte que fizeram toda a diferença."</p>
+      <span>- Clara, 19 anos</span>
+    </div>
+    <div class="testimonial">
+      <p>"Como mãe, é tranquilizador saber que posso acompanhar a saúde mental do meu filho de forma tão eficiente."</p>
+      <span>- Carla, mãe de um aluno</span>
+    </div>
+    </div>
+  </section>
+
+  <!-- Seção: Fale Conosco -->
+  <section id="contact" class="section contact">
+    <div class="contact-container">
+        <h2>FALE <span class="highlight">CONOSCO</span></h2>
+        <p>Entre em contato conosco para tirar dúvidas ou compartilhar suas sugestões:</p>
+        <form>
+            <label for="name">Seu nome</label>
+            <input type="text" id="name" placeholder="Digite seu nome" required>
+            
+            <label for="email">Seu e-mail</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+            
+            <label for="message">Sua mensagem</label>
+            <textarea id="message" placeholder="Digite sua mensagem" rows="5" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>© 2024 PsychON. Desenvolvido com 💙 por estudantes dedicados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

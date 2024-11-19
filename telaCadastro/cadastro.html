@@ -3,290 +3,270 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Alunos e Responsáveis</title>
+  <title>Cadastro - PsychON</title>
   <style>
-    /* Estilo da página */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      background-color: #003366;
-      font-family: Arial, sans-serif;
     }
-    .container {
-      width: 400px; /* Ajuste da largura */
-      padding: 30px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-      text-align: center;
+
+    .form-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
     }
-    .tabs {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 20px;
-    }
-    .tab {
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 20px;
-      background-color: #f1f1f1;
-    }
-    .tab.active {
-      background-color: #0073e6;
-      color: #fff;
-    }
+
     h2 {
-      color: #333;
-    }
-    .form-group {
+      text-align: center;
       margin-bottom: 20px;
-      position: relative;
-      text-align: left;
     }
+
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
     }
-    input[type="text"], input[type="email"], input[type="password"] {
+
+    input, select {
       width: 100%;
-      padding: 10px;
-      padding-right: 35px; /* espaço para o ícone de olho */
+      padding: 8px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      box-sizing: border-box;
     }
-    input.error {
-      border-color: red;
-    }
-    .error-message {
-      color: red;
-      font-size: 0.9em;
-      display: none;
-      margin-top: 5px;
-    }
+
     button {
       width: 100%;
-      padding: 12px;
-      background-color: #0073e6;
+      padding: 10px;
+      background-color: #4CAF50;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 16px;
     }
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+
+    button:hover {
+      background-color: #45a049;
     }
-    .success-message {
-      color: green;
-      font-size: 0.9em;
-      margin-top: 10px;
+
+    .select-container {
+      margin-bottom: 20px;
     }
-    .checkbox-group {
-      display: flex;
-      align-items: center;
+
+    .cep-container {
+      display: none;
     }
-    /* Estilo do ícone de olho */
-    .password-container {
-      position: relative;
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
     }
-    .eye-icon {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      color: #666;
+
+    .form-row .full-width {
+      grid-column: span 2;
     }
+
+    .form-container input[type="text"], .form-container input[type="number"], .form-container input[type="date"], .form-container input[type="email"], .form-container input[type="password"] {
+      font-size: 14px;
+    }
+
+    .id-container {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e2e2e2;
+      border-radius: 5px;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="tabs">
-    <div class="tab active" onclick="showPage('alunoPage')">Aluno</div>
-    <div class="tab" onclick="showPage('responsavelPage')">Responsável</div>
+  <div class="form-container">
+    <h2>Cadastro</h2>
+    <div class="select-container">
+      <label for="userType">Selecione o tipo de cadastro:</label>
+      <select id="userType" onchange="toggleForm()">
+        <option value="aluno">Cadastrar Aluno</option>
+        <option value="responsavel">Cadastrar Responsável</option>
+      </select>
+    </div>
+
+    <!-- Formulário de Cadastro de Aluno -->
+    <div id="formAluno">
+      <div class="form-row">
+        <div>
+          <label for="nomeAluno">Nome do Aluno:</label>
+          <input type="text" id="nomeAluno" name="nomeAluno" required>
+        </div>
+
+        <div>
+          <label for="matricula">Matrícula:</label>
+          <input type="number" id="matricula" name="matricula" maxlength="8" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="dataNascimento">Data de Nascimento:</label>
+          <input type="date" id="dataNascimento" name="dataNascimento" required>
+        </div>
+
+        <div>
+          <label for="emailAluno">E-mail:</label>
+          <input type="email" id="emailAluno" name="emailAluno" required>
+        </div>
+      </div>
+
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep" maxlength="8" onblur="buscarEndereco()" required>
+
+      <div class="cep-container">
+        <div class="form-row">
+          <div>
+            <label for="rua">Rua:</label>
+            <input type="text" id="rua" name="rua" disabled>
+          </div>
+
+          <div>
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" disabled>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" disabled>
+          </div>
+
+          <div>
+            <label for="uf">UF:</label>
+            <input type="text" id="uf" name="uf" disabled>
+          </div>
+        </div>
+      </div>
+
+      <label for="senhaAluno">Senha:</label>
+      <input type="password" id="senhaAluno" name="senhaAluno" required>
+
+      <button type="button" onclick="gerarIdAluno()">Cadastrar Aluno</button>
+
+      <!-- Exibe o ID do Aluno -->
+      <div id="idContainer" class="id-container" style="display: none;">
+        <p>Seu ID de Aluno é: <span id="idAlunoDisplay"></span></p>
+      </div>
+    </div>
+
+    <!-- Formulário de Cadastro de Responsável -->
+    <div id="formResponsavel" style="display: none;">
+      <div class="form-row">
+        <div>
+          <label for="nomeResponsavel">Nome do Responsável:</label>
+          <input type="text" id="nomeResponsavel" name="nomeResponsavel" required>
+        </div>
+
+        <div>
+          <label for="emailResponsavel">E-mail:</label>
+          <input type="email" id="emailResponsavel" name="emailResponsavel" required>
+        </div>
+      </div>
+
+      <label for="telefone">Telefone:</label>
+      <input type="number" id="telefone" name="telefone" placeholder="(55) 5555-5555" maxlength="9" required>
+
+      <label for="idAluno">ID do Aluno (Opcional):</label>
+      <input type="text" id="idAluno" name="idAluno">
+
+      <label for="senhaResponsavel">Senha:</label>
+      <input type="password" id="senhaResponsavel" name="senhaResponsavel" required>
+
+      <button type="submit">Cadastrar Responsável</button>
+    </div>
   </div>
 
-  <div id="alunoPage" class="form-page">
-    <h2>Cadastro de Aluno</h2>
-    <div class="form-group">
-      <label for="nomeAluno">Nome do Aluno</label>
-      <input type="text" id="nomeAluno" required>
-      <span class="error-message" id="nomeAlunoError">Campo obrigatório</span>
-    </div>
-    <div class="form-group">
-      <label for="matricula">Matrícula (até 8 caracteres)</label>
-      <input type="text" id="matricula" maxlength="8" required>
-      <span class="error-message" id="matriculaError">Campo obrigatório</span>
-    </div>
-    <div class="form-group">
-      <label for="emailAluno">Email do Responsável</label>
-      <input type="email" id="emailAluno" required>
-      <span class="error-message" id="emailAlunoError">Insira um e-mail válido com "@"</span>
-    </div>
-    <div class="form-group password-container">
-      <label for="senhaAluno">Senha</label>
-      <input type="password" id="senhaAluno" required>
-      <span class="eye-icon" onclick="togglePassword('senhaAluno')">👁️</span>
-      <span class="error-message" id="senhaAlunoError">Campo obrigatório</span>
-    </div>
-    <div class="checkbox-group">
-      <input type="checkbox" id="manterConectadoAluno">
-      <label for="manterConectadoAluno">Manter Conectado</label>
-    </div>
-    <button id="cadastrarAlunoBtn" onclick="cadastrarAluno()">Cadastrar Aluno</button>
-    <p class="success-message" id="alunoSuccess"></p>
-    <p id="alunoId"></p>
-  </div>
+  <script>
+    // Função para alternar entre os formulários
+    function toggleForm() {
+      const userType = document.getElementById('userType').value;
+      const formAluno = document.getElementById('formAluno');
+      const formResponsavel = document.getElementById('formResponsavel');
+      const cepContainer = document.querySelector('.cep-container');
 
-  <div id="responsavelPage" class="form-page" style="display:none;">
-    <h2>Cadastro de Responsável</h2>
-    <div class="form-group">
-      <label for="nomeResponsavel">Nome</label>
-      <input type="text" id="nomeResponsavel" required>
-      <span class="error-message" id="nomeResponsavelError">Campo obrigatório</span>
-    </div>
-    <div class="form-group">
-      <label for="emailResponsavel">Email do Responsável</label>
-      <input type="email" id="emailResponsavel" required>
-      <span class="error-message" id="emailResponsavelError">Insira um e-mail válido com "@"</span>
-    </div>
-    <div class="form-group">
-      <label for="idAlunoResponsavel">ID do Aluno</label>
-      <input type="text" id="idAlunoResponsavel" required>
-      <span class="error-message" id="idAlunoResponsavelError">Campo obrigatório</span>
-    </div>
-    <div class="form-group password-container">
-      <label for="senhaResponsavel">Senha</label>
-      <input type="password" id="senhaResponsavel" required>
-      <span class="eye-icon" onclick="togglePassword('senhaResponsavel')">👁️</span>
-      <span class="error-message" id="senhaResponsavelError">Campo obrigatório</span>
-    </div>
-    <div class="checkbox-group">
-      <input type="checkbox" id="manterConectadoResponsavel">
-      <label for="manterConectadoResponsavel">Manter Conectado</label>
-    </div>
-    <button id="cadastrarResponsavelBtn" onclick="cadastrarResponsavel()">Cadastrar Responsável</button>
-    <p class="success-message" id="responsavelSuccess"></p>
-  </div>
-</div>
-
-<script>
-  let alunoID;
-  let alunoCadastrado = false;
-  let responsavelCadastrado = false;
-
-  function showPage(pageId) {
-    document.getElementById("alunoPage").style.display = pageId === "alunoPage" ? "block" : "none";
-    document.getElementById("responsavelPage").style.display = pageId === "responsavelPage" ? "block" : "none";
-    document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-    document.querySelector(`.tab[onclick="showPage('${pageId}')"]`).classList.add("active");
-  }
-
-  function cadastrarAluno() {
-    if (alunoCadastrado) return;
-
-    const nomeAluno = document.getElementById("nomeAluno");
-    const matricula = document.getElementById("matricula");
-    const emailAluno = document.getElementById("emailAluno");
-    const senhaAluno = document.getElementById("senhaAluno");
-
-    let valid = true;
-
-    // Validação dos campos de aluno
-    [nomeAluno, matricula, senhaAluno].forEach((input) => {
-      const errorMsg = document.getElementById(input.id + "Error");
-      if (input.value.trim() === "") {
-        errorMsg.style.display = "block";
-        input.classList.add("error");
-        valid = false;
+      // Mostrar ou esconder os formulários com base na seleção
+      if (userType === 'aluno') {
+        formAluno.style.display = 'block';
+        formResponsavel.style.display = 'none';
+        cepContainer.style.display = 'block'; // Exibe campos de endereço para o aluno
       } else {
-        errorMsg.style.display = "none";
-        input.classList.remove("error");
+        formAluno.style.display = 'none';
+        formResponsavel.style.display = 'block';
+        cepContainer.style.display = 'none'; // Esconde os campos de endereço para o responsável
       }
-    });
-
-    // Validação do email
-    const emailErrorMsg = document.getElementById("emailAlunoError");
-    if (!emailAluno.value.includes("@")) {
-      emailErrorMsg.style.display = "block";
-      emailAluno.classList.add("error");
-      valid = false;
-    } else {
-      emailErrorMsg.style.display = "none";
-      emailAluno.classList.remove("error");
     }
 
-    if (!valid) return;
+    // Função para gerar ID único do aluno
+    function gerarIdAluno() {
+      const nomeAluno = document.getElementById('nomeAluno').value;
+      const matricula = document.getElementById('matricula').value;
+      const dataNascimento = document.getElementById('dataNascimento').value;
+      const emailAluno = document.getElementById('emailAluno').value;
+      const cep = document.getElementById('cep').value;
 
-    // Gerar ID do aluno e bloquear o botão de cadastro
-    alunoID = "ID" + Math.floor(1000 + Math.random() * 9000);
-    document.getElementById("alunoId").innerText = "ID do Aluno: " + alunoID;
-    document.getElementById("alunoSuccess").innerText = "Aluno cadastrado com sucesso!";
-    document.getElementById("cadastrarAlunoBtn").disabled = true;
-    alunoCadastrado = true;
-  }
-
-  function cadastrarResponsavel() {
-    if (responsavelCadastrado) return;
-
-    const nomeResponsavel = document.getElementById("nomeResponsavel");
-    const emailResponsavel = document.getElementById("emailResponsavel");
-    const idAlunoResponsavel = document.getElementById("idAlunoResponsavel");
-    const senhaResponsavel = document.getElementById("senhaResponsavel");
-
-    let valid = true;
-
-    // Validação dos campos de responsável
-    [nomeResponsavel, idAlunoResponsavel, senhaResponsavel].forEach((input) => {
-      const errorMsg = document.getElementById(input.id + "Error");
-      if (input.value.trim() === "") {
-        errorMsg.style.display = "block";
-        input.classList.add("error");
-        valid = false;
-      } else {
-        errorMsg.style.display = "none";
-        input.classList.remove("error");
+      // Validação dos campos
+      if (!nomeAluno || !matricula || !dataNascimento || !emailAluno || !cep) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
       }
-    });
 
-    // Validação do email
-    const emailErrorMsg = document.getElementById("emailResponsavelError");
-    if (!emailResponsavel.value.includes("@")) {
-      emailErrorMsg.style.display = "block";
-      emailResponsavel.classList.add("error");
-      valid = false;
-    } else {
-      emailErrorMsg.style.display = "none";
-      emailResponsavel.classList.remove("error");
+      // Gerar ID único do aluno (ALUNO + 4 números aleatórios)
+      const alunoId = 'ALUNO' + Math.floor(Math.random() * 10000); // Gera um ID único com 4 números aleatórios
+      document.getElementById('idAlunoDisplay').textContent = alunoId;
+      document.getElementById('idContainer').style.display = 'block'; // Exibe o ID gerado
+
+      // Após a validação e geração do ID, redireciona para outra página
+      setTimeout(function() {
+        window.location.href = '/pagina_inicial/inicial.html';
+      }, 10000);
     }
 
-    if (!valid) return;
+    // Função para buscar endereço pelo CEP
+    function buscarEndereco() {
+      const cep = document.getElementById('cep').value;
+      const cepFormatado = cep.replace(/\D/g, ''); // Remove qualquer caractere não numérico
 
-    // Verificação de ID do aluno e bloqueio do botão de cadastro
-    if (idAlunoResponsavel.value !== alunoID) {
-      alert("ID do Aluno incorreto!");
-      return;
+      if (cepFormatado.length === 8) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.erro) {
+              alert('CEP não encontrado.');
+            } else {
+              document.getElementById('rua').value = data.logradouro;
+              document.getElementById('bairro').value = data.bairro;
+              document.getElementById('cidade').value = data.localidade;
+              document.getElementById('uf').value = data.uf;
+            }
+          })
+          .catch(error => alert('Erro ao buscar CEP.'));
+      }
     }
-
-    document.getElementById("responsavelSuccess").innerText = "Responsável cadastrado com sucesso!";
-    document.getElementById("cadastrarResponsavelBtn").disabled = true;
-    responsavelCadastrado = true;
-  }
-
-  // Função para alternar a visibilidade da senha
-  function togglePassword(fieldId) {
-    const passwordField = document.getElementById(fieldId);
-    const fieldType = passwordField.getAttribute("type");
-    passwordField.setAttribute("type", fieldType === "password" ? "text" : "password");
-  }
-</script>
+  </script>
 
 </body>
 </html>
