@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhar - PsychON</title>
+    <link rel="stylesheet" href="desenho.css">
+</head>
+<body>
+    <header>
+        <h1>Desenho Terapêutico</h1>
+        <p>Use o espaço abaixo para desenhar ou limpar o desenho.</p>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="controls">
+                <div class="color-palette">
+                    <button class="color" style="background-color: #FF0000;" onclick="changeColor('#FF0000')"></button>
+                    <button class="color" style="background-color: #00FF00;" onclick="changeColor('#00FF00')"></button>
+                    <button class="color" style="background-color: #0000FF;" onclick="changeColor('#0000FF')"></button>
+                    <button class="color" style="background-color: #FFFF00;" onclick="changeColor('#FFFF00')"></button>
+                    <button class="color" style="background-color: #FF00FF;" onclick="changeColor('#FF00FF')"></button>
+                    <button class="color" style="background-color: #00FFFF;" onclick="changeColor('#00FFFF')"></button>
+                    <button class="color" style="background-color: #000000;" onclick="changeColor('#000000')"></button>
+                </div>
+                <button onclick="clearCanvas()">Limpar Desenho</button>
+            </div>
+            <canvas id="drawingCanvas"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PsychON. Cuidando de você.</p>
+    </footer>
+
+    <script src="desenho.js"></script>
+</body>
+</html>

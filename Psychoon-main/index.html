@@ -7,7 +7,14 @@
   <title>PsychON - Bem-Estar</title>
 </head>
 <body>
-  <div class="container">
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="spinner"></div>
+    <p>Carregando...</p>
+  </div>
+
+  <!-- Conteúdo da página -->
+  <div id="content" class="container">
     <!-- Cabeçalho -->
     <header>
       <h1>PsychON</h1>
@@ -27,15 +34,13 @@
         <input type="email" id="email" placeholder="Email" required>
         <input type="password" id="senha" placeholder="Senha" required>
         
-        <a href="/pagina_inicial/inicial.html">
-        <button onclick="login()">Entrar</button>
-        </a>
+        <button onclick="login()">Entrar</button> <!-- Botão Entrar -->
         <p>Não tem conta? <a href="/telaCadastro/cadastro.html">Cadastre-se</a></p>
       </div>
 
     <!-- Rodapé -->
     <footer>
-      <p>Precisa de ajuda? <a href="#">Entre em contato com um profissional</a></p>
+      <p>Precisa de ajuda? <a href="javascript:void(0)" id="faleComProfissional" onclick="faleComProfissional()">Fale com um profissional</a></p> <!-- Botão "Fale com um profissional" -->
     </footer>
   </div>
 

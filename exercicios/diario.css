@@ -1,0 +1,76 @@
+/* Resetando estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cor de fundo e fonte base */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #5C6BC0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título principal */
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Descrição */
+header p {
+    font-size: 1.2rem;
+}
+
+/* Área de escrita */
+.writing-area {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Textarea de sentimentos */
+textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+/* Botão de enviar */
+button {
+    background-color: #5C6BC0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3f51b5;
+}
+
+/* Rodapé */
+footer {
+    background-color: #5C6BC0;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

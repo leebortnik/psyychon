@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - PsychON</title>
+    <link rel="stylesheet" href="exercicio.css">
+</head>
+<body>
+    <header>
+        <h1>Exercícios para Saúde Mental</h1>
+        <p>Escolha um exercício para relaxar e melhorar seu bem-estar.</p>
+    </header>
+    <main>
+        <section id="exercise-breathing" class="exercise-card">
+            <h2>Respiração 4-7-8</h2>
+            <p>Relaxe com este exercício simples. Inspire por 4 segundos, segure por 7, e expire por 8.</p>
+            <button onclick="startBreathingExercise()">Iniciar</button>
+        </section>
+        <section id="exercise-gratitude" class="exercise-card">
+            <h2>Diário de Gratidão</h2>
+            <p>Escreva 3 coisas pelas quais você é grato hoje.</p>
+            <button onclick="window.location.href='diario.html'">Escrever</button>
+        </section>
+        <section id="exercise-stretching" class="exercise-card">
+            <h2>Alongamentos Simples</h2>
+            <p>Relaxe seu corpo com movimentos leves. Siga as instruções para alongar.</p>
+            <button onclick="startStretching()">Iniciar</button>
+        </section>
+        <section id="exercise-meditation" class="exercise-card">
+            <h2>Iniciar Meditação</h2>
+            <p>Ouça uma meditação guiada para relaxar sua mente.</p>
+            <button onclick="iniciarMeditacao()">Iniciar</button>
+        </section>
+        <section id="exercise-drawing" class="exercise-card">
+            <h2>Desenhar</h2>
+            <p>Use o espaço para desenhar e relaxar.</p>
+            <button onclick="window.location.href='desenho.html'">Desenhar</button>
+        </section>
+        <section id="exercise-music" class="exercise-card">
+            <h2>Escutar Música</h2>
+            <p>Relaxe ouvindo uma playlist no Spotify.</p>
+            <button onclick="iniciarMusica()">Escutar</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 PsychON. Cuidando de você.</p>
+    </footer>
+    <script src="exercicio.js"></script>
+</body>
+</html>

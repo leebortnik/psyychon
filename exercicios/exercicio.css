@@ -1,0 +1,117 @@
+
+/* Resetando estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cor de fundo e fonte base */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F6F9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #5C6BC0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Título principal */
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Descrição */
+header p {
+    font-size: 1.2rem;
+}
+
+/* Estilos do conteúdo principal */
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas */
+    gap: 20px; /* Espaçamento entre os cards */
+    padding: 20px;
+    justify-content: center; /* Centraliza o grid no container */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+
+/* Cartões de exercício */
+.exercise-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+/* Efeito de hover nos cartões */
+.exercise-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Títulos dos exercícios */
+.exercise-card h2 {
+    font-size: 1.8rem;
+    color: #5C6BC0;
+    margin-bottom: 10px;
+}
+
+/* Descrição dos exercícios */
+.exercise-card p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Botões */
+button {
+    background-color: #5C6BC0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    background-color: #3F51B5;
+}
+
+/* Rodapé */
+footer {
+    background-color: #5C6BC0;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr; /* Em telas pequenas, exibe uma coluna */
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .exercise-card {
+        max-width: 100%;
+    }
+}

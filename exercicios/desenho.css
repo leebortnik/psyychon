@@ -1,0 +1,110 @@
+/* Resetando margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    overflow: hidden; /* Impede o scroll lateral */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #5C6BC0; /* Cor do cabeçalho */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título principal */
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Descrição do cabeçalho */
+header p {
+    font-size: 1.2rem;
+}
+
+/* Estilos do conteúdo principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* Estilos do container do canvas */
+.container {
+    position: relative;
+    width: 80vw; /* Largura do canvas é 80% da tela */
+    height: 70vh; /* Altura do canvas é 70% da tela */
+    background-color: #fff;
+    border: 1px solid #ccc; /* Borda leve ao redor do container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Organiza os controles acima do canvas */
+    padding-top: 20px;
+}
+
+/* Estilos da paleta de cores */
+.color-palette {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.color {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos do canvas de desenho */
+#drawingCanvas {
+    width: 90%; /* O canvas ocupa 90% da largura do container */
+    height: 70%; /* O canvas ocupa 70% da altura do container */
+    background-color: #ffffff;
+    border: 0; /* Remove borda do canvas */
+    cursor: crosshair; /* Mostra o cursor tipo cruz */
+}
+
+/* Estilos do botão de limpar */
+button {
+    padding: 10px 20px;
+    background-color: #5C6BC0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3f51b5;
+}
+
+/* Rodapé */
+footer {
+    background-color: #5C6BC0;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

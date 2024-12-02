@@ -1,71 +1,33 @@
-// Alterna entre formulários de Aluno e Responsável
-function toggleForms(type) {
-  document.getElementById('formAluno').style.display = type === 'aluno' ? 'block' : 'none';
-  document.getElementById('formResponsavel').style.display = type === 'responsavel' ? 'block' : 'none';
+// Função para exibir o carregamento
+function showLoader() {
+  document.getElementById('loader').style.display = 'flex';
+  document.getElementById('content').style.display = 'none';
 }
 
-// Gera um ID único permanente
-function gerarIDAluno() {
-  return 'ID-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+// Função para esconder o carregamento
+function hideLoader() {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
 }
 
-// Cadastra o Aluno
-function cadastrarAluno(event) {
-  event.preventDefault();
+// Função de login
+function login() {
+  showLoader(); // Mostra o loader antes de redirecionar
 
-  const nome = document.getElementById('nomeAluno').value.trim();
-  const email = document.getElementById('emailAluno').value.trim();
-  const senha = document.getElementById('senhaAluno').value.trim();
-
-  // Valida os campos
-  if (!nome || !email || !senha) {
-    alert('Por favor, preencha todos os campos corretamente.');
-    return;
-  }
-
-  // Verifica se o aluno já está cadastrado
-  if (!localStorage.getItem('alunoID')) {
-    const alunoID = gerarIDAluno();
-
-    // Salva os dados no localStorage
-    localStorage.setItem('alunoID', alunoID);
-    localStorage.setItem('nomeAluno', nome);
-    localStorage.setItem('emailAluno', email);
-    localStorage.setItem('senhaAluno', senha);
-
-    alert(`Cadastro realizado com sucesso! Seu ID é: ${alunoID}`);
-  }
-
-  // Redireciona para a tela inicial
-  window.location.href = 'inicial.html';
+  setTimeout(function() {
+    // Simula o redirecionamento após o login
+    window.location.href = '/pagina_inicial/inicial.html';
+    hideLoader(); // Esconde o loader após o redirecionamento
+  }, 2000); // Tempo de espera para simular o carregamento (2 segundos)
 }
 
-// Cadastra o Responsável
-function cadastrarResponsavel(event) {
-  event.preventDefault();
+// Função para "Fale com um profissional"
+function faleComProfissional() {
+  showLoader(); // Mostra o loader ao clicar no link
 
-  const nome = document.getElementById('nomeResponsavel').value.trim();
-  const email = document.getElementById('emailResponsavel').value.trim();
-  const senha = document.getElementById('senhaResponsavel').value.trim();
-  const idAluno = document.getElementById('idAluno').value.trim();
-
-  // Valida os campos
-  if (!nome || !email || !senha || !idAluno) {
-    alert('Por favor, preencha todos os campos corretamente.');
-    return;
-  }
-
-  // Verifica se o ID do aluno é válido
-  const alunoID = localStorage.getItem('alunoID');
-  if (idAluno !== alunoID) {
-    alert('ID do Aluno inválido. Verifique e tente novamente.');
-    return;
-  }
-
-  // Salva os dados do responsável
-  localStorage.setItem('nomeResponsavel', nome);
-  localStorage.setItem('emailResponsavel', email);
-  localStorage.setItem('senhaResponsavel', senha);
-
-  alert('Cadastro realizado com sucesso!');
+  setTimeout(function() {
+    // Redireciona para a página de contato com o profissional
+    window.location.href = '/Atendimento/atendimento.html';
+    hideLoader(); // Esconde o loader após o redirecionamento
+  }, 2000); // Tempo de espera para simular o carregamento (2 segundos)
 }

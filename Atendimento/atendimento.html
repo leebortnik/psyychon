@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale com um Profissional</title>
+    <link rel="stylesheet" href="atendimento.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Fale com um Profissional</h1>
+        <p>Conecte-se com profissionais qualificados prontos para ajudar.</p>
+    </header>
+
+    <main class="main-content">
+        <section class="form-section">
+            <h2>Iniciar Atendimento</h2>
+            <form id="chatForm">
+                <label for="name">Nome ou Pseudônimo:</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome ou pseudônimo" required>
+
+                <label for="reason">Motivo do Contato:</label>
+                <select id="reason" name="reason">
+                    <option value="ansiedade">Ansiedade</option>
+                    <option value="estresse">Estresse</option>
+                    <option value="depressao">Depressão</option>
+                    <option value="outros">Outros</option>
+                </select>
+
+                <label for="urgency">Urgência:</label>
+                <select id="urgency" name="urgency">
+                    <option value="normal">Normal</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+
+                <button type="button" id="startChat">Iniciar Chat</button>
+
+            </form>
+        </section>
+
+        <section class="chat-box" id="chatBox">
+            <h2>Chat</h2>
+            <div class="messages" id="messages">
+                <!-- Mensagens aparecerão aqui -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="chatInput" placeholder="Digite sua mensagem">
+                <button id="sendMessage">Enviar</button>
+            </div>
+        </section>
+    </main>
+    
+        <a href="/Psychoon-main/index.html">
+            <p>Voltar</p>
+        </a>
+
+    <footer class="footer">
+        <p>Atenção: Este atendimento não substitui um serviço de emergência. Para emergências, ligue para o CVV no 188.</p>
+    </footer>
+
+    <script src="atendimento.js"></script>
+</body>
+</html>
