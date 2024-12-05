@@ -165,7 +165,7 @@
       <label for="senhaAluno">Senha:</label>
       <input type="password" id="senhaAluno" name="senhaAluno" required>
 
-      <button type="button" onclick="gerarIdAluno()">Cadastrar Aluno</button>
+      <button type="button" onclick="cadastrarAluno()">Cadastrar Aluno</button>
 
       <!-- Exibe o ID do Aluno -->
       <div id="idContainer" class="id-container" style="display: none;">
@@ -220,50 +220,68 @@
       }
     }
 
-    // Função para gerar ID único do aluno
-    function gerarIdAluno() {
+    // Função para cadastrar aluno
+    function cadastrarAluno() {
       const nomeAluno = document.getElementById('nomeAluno').value;
       const matricula = document.getElementById('matricula').value;
       const dataNascimento = document.getElementById('dataNascimento').value;
       const emailAluno = document.getElementById('emailAluno').value;
       const cep = document.getElementById('cep').value;
+      const senhaAluno = document.getElementById('senhaAluno').value;
 
       // Validação dos campos
-      if (!nomeAluno || !matricula || !dataNascimento || !emailAluno || !cep) {
+      if (!nomeAluno || !matricula || !dataNascimento || !emailAluno || !cep || !senhaAluno) {
         alert('Por favor, preencha todos os campos obrigatórios.');
         return;
       }
 
-      // Gerar ID único do aluno (ALUNO + 4 números aleatórios)
-      const alunoId = 'ALUNO' + Math.floor(Math.random() * 10000); // Gera um ID único com 4 números aleatórios
-      document.getElementById('idAlunoDisplay').textContent = alunoId;
-      document.getElementById('idContainer').style.display = 'block'; // Exibe o ID gerado
+      // Montando os dados a serem enviados
+      const alunoData = {
+        nomeAluno,
+        matricula,
+        dataNascimento,
+        emailAluno,
+        cep,
+        senhaAluno
+      };
 
-      // Após a validação e geração do ID, redireciona para outra página
-      setTimeout(function() {
-        window.location.href = '/pagina_inicial/inicial.html';
-      }, 10000);
+      // Envia os dados para o backend
+      fetch('http://localhost:3001/api/cadastrarAluno', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(alunoData) // Convertendo o objeto para JSON
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Aluno cadastrado:', data);
+        alert('Cadastro realizado com sucesso!');
+        // Aqui você pode redirecionar o usuário ou mostrar algum feedback adicional
+      })
+      .catch(error => {
+        console.error('Erro ao cadastrar aluno:', error);
+        alert('Erro ao realizar o cadastro.');
+      });
     }
 
     // Função para buscar endereço pelo CEP
     function buscarEndereco() {
       const cep = document.getElementById('cep').value;
-      const cepFormatado = cep.replace(/\D/g, ''); // Remove qualquer caractere não numérico
-
+      const cepFormatado = cep.replace(/\D/g, '');
       if (cepFormatado.length === 8) {
-        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        fetch(`https://viacep.com.br/ws/${cepFormatado}/json/`)
           .then(response => response.json())
           .then(data => {
-            if (data.erro) {
-              alert('CEP não encontrado.');
-            } else {
+            if (!data.erro) {
               document.getElementById('rua').value = data.logradouro;
               document.getElementById('bairro').value = data.bairro;
               document.getElementById('cidade').value = data.localidade;
               document.getElementById('uf').value = data.uf;
+            } else {
+              alert('CEP não encontrado.');
             }
-          })
-          .catch(error => alert('Erro ao buscar CEP.'));
+          });
       }
     }
   </script>
