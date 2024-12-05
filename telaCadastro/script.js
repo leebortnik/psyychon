@@ -26,4 +26,4 @@ function buscarEndereco() {
     event.preventDefault();
     alert('Cadastro de Responsável realizado com sucesso!');
   });
-  
+
